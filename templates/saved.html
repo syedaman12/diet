@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved Diet Plans</title>
+  <style>
+  body {
+      font-family: Arial, sans-serif;
+      /* Inspiring creative photo */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 0;
+      padding: 20px;
+      /* backdrop-filter: blur(6px); Makes it stylish */
+  }
+    .card {
+      max-width: 900px;
+      width: 100%;
+      background: #f4f4f4;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(29, 28, 28, 0.1);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    h1 { color: #0f1010; margin-bottom: 16px; }
+    h2 { margin: 10px 0; color: #171717; }
+    p, pre { font-size: 15px; }
+    pre { white-space: pre-wrap; background: #111212; padding: 10px; border-radius: 8px; }
+    .note { margin-top: 10px; color: rgb(11, 11, 11); font-size: 13px; }
+    a.back {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background: #1d049c;
+      color: #f7f2f2;
+      padding: 10px 18px;
+      border-radius: 6px;
+    }
+    a.back:hover {
+      background: #0a0a0a;
+      color: black;
+    }
+    .divider {
+      margin: 30px 0;
+      height: 2px;
+      background: #f60505;
+    }
+
+    .diet-plan {
+    font-family: Arial, sans-serif;
+    background: rgba(255, 254, 254, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    line-height: 1.6;
+    }
+
+    .diet-plan h1, .diet-plan h2, .diet-plan h3 {
+        color: #111111;
+        margin-top: 10px;
+    }
+    .diet-plan ul {
+        list-style: disc;
+        margin-left: 20px;
+    }
+
+    .b{
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background: #ff1414;
+      color: #f2eeee;
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: 1px solid rgb(231, 224, 224);
+    }
+
+    .b:hover{
+      background: #45a049;
+      color: black;
+    }
+
+  </style>
+</head>
+<body>
+  <div style="width: 100%; max-width: 950px;">
+    <h1>📂 All Saved Diet Plans</h1>
+
+    {% for plan in plans %}
+      <div class="card">
+        <h2>🕒 {{ plan.timestamp }}</h2>
+        <p><b>Query:</b> {{ plan.query }}</p>
+        <p><b>Weight:</b> {{ plan.weight }} kg | <b>Height:</b> {{ plan.height }} cm</p>
+        <p><b>Age:</b> {{ plan.age }} | <b>Gender:</b> {{ plan.gender }} | <b>Activity:</b> {{ plan.activity }}</p>
+
+        <h3>Plan:</h3>
+        <div class="diet-plan">{{ plan.diet_plan_html | safe }}</div>
+
+
+
+        <p class="note">For informational purposes only, not medical advice.</p>
+
+        <a href="/download/{{ loop.index0 }}" class="download-btn"><button class="b">Download pdf</button></a>
+        <a href="/delete/{{ loop.index0 }}" class="delete-btn" onclick="return confirm('Are you sure you want to delete this plan?');">
+        <button class="b" >Delete</button>
+        </a>
+    
+
+  
+</div>
+    {% endfor %}
+    
+
+    <a href="/" class="back">⬅ Back to Form</a>
+  </div>
+</body>
+</html>
