@@ -1,7 +1,7 @@
-Flask==3.0.3
-gunicorn
-openai==0.28.1
-
-reportlab
+flask
+openai
 markdown
+reportlab
+gunicorn
+
 
