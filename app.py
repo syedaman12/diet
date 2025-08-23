@@ -102,10 +102,13 @@ def predict():
     """
 
     # Call OpenRouter API
+
     response = client.chat.completions.create(
-        model="deepseek/deepseek-r1:free",
+        model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}],
-    )
+        max_tokens=300
+)
+
 
     diet_plan_raw = response.choices[0].message.content
 
