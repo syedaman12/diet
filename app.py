@@ -13,9 +13,10 @@ app = Flask(__name__)
 
 # Connect to OpenRouter API
 client = OpenAI(
-    api_key="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",
+    api_key=os.getenv("OPENAI_API_KEY"),
     base_url="https://openrouter.ai/api/v1"
 )
+
 
 DATA_FILE = "diet_plans.json"
 
