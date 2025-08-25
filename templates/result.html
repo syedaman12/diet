@@ -1,91 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Your Diet Plan</title>
-  <link rel="stylesheet" href="{https://www.vondy.com/ai-macros-meal-plan-generator--S3K20daO}">
-<style>
-  body {
-   
-    background-size: cover !important;
-    background-position: center !important; 
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin: 0;
-    padding: 20px;
-    backdrop-filter: blur(6px); /* Makes it stylish */
-}
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
+    .container {
+      max-width: 800px; margin: auto; background: #fff; padding: 22px;
+      border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    h2 { margin-top: 0; color: #222; text-align: center; }
 
-    .card {
-      max-width: 800px;
-      width: 100%;
-      background: #fcf8f8;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-      line-height: 1.6;
-    }
-    h1 {
-      color: #151414;
-      margin-bottom: 16px;
-    }
-    pre {
-      white-space: pre-wrap;
-      font-size: 16px;
-      margin: 0;
-    }
-    .note {
-      margin-top: 20px;
-      color: rgb(2, 2, 2);
-      font-size: 14px;
-    }
-    a.back {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      background: #f80303;
-      color: #111111;
-      padding: 10px 18px;
-      border-radius: 6px;
-    }
-    a.back:hover {
-      background: #000000;
-    }
+    /* Table that highlights each meal in its own row */
+    .meal-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .meal-table th, .meal-table td { padding: 12px; border: 1px solid #e5e5e5; vertical-align: top; }
+    .meal-table th { background: #f3f6ff; color: #1a3d8f; text-align: left; width: 140px; }
+    .meal-table td { background: #fafbff; }
+    .badge { font-weight: 700; }
 
-    .diet-plan {
-    font-family: Arial, sans-serif;
-    background: rgba(245, 245, 245, 0.9);
-    padding: 20px;
-    border-radius: 12px;
-    line-height: 1.6;
-    }
-  .diet-plan h1, .diet-plan h2, .diet-plan h3 {
-      color: #060606;
-      margin-top: 15px;
-  }
-  .diet-plan ul {
-      list-style: disc;
-      margin-left: 20px;
-  }
-
-
-
-
+    .note { margin-top: 16px; font-size: 14px; color: #666; text-align: center; }
+    .back { display: inline-block; margin-top: 18px; text-decoration: none; background: #e7ecff; color: #1a3d8f; padding: 10px 14px; border-radius: 8px; }
+    .back:hover { background: #d7e1ff; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Your Personalized Diet Plan</h1>
-    <div class="diet-plan">{{ diet_plan | safe }}</div>
-    <p class="note"> This plan is for informational purposes only, not medical advice.</p>
-    <a href="/" class="back">⬅ Back to Form</a>
-    
+  <div class="container">
+    <h2>Your Personalized Diet Plan</h2>
 
+    <!-- Three highlighted rows -->
+    <table class="meal-table">
+      <tr>
+        <th><span class="badge">Breakfast</span></th>
+        <td>{{ meals.breakfast | safe }}</td>
+      </tr>
+      <tr>
+        <th><span class="badge">Lunch</span></th>
+        <td>{{ meals.lunch | safe }}</td>
+      </tr>
+      <tr>
+        <th><span class="badge">Dinner</span></th>
+        <td>{{ meals.dinner | safe }}</td>
+      </tr>
+    </table>
+
+    <p class="note">This plan is for informational purposes only, not medical advice.</p>
+    <a href="/" class="back">⬅ Back to Form</a>
   </div>
 </body>
 </html>
-
