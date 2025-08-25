@@ -11,10 +11,12 @@ app = Flask(__name__)
 
 # ---------- OpenRouter client ----------
 # Never hardcode keys in code. Set on Render as an env var: OPENROUTER_API_KEY
+
 client = OpenAI(
-    api_key="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",
+    api_key=os.getenv("OPENROUTER_API_KEY"),
     base_url="https://openrouter.ai/api/v1"
 )
+
 
 
 DATA_FILE = "diet_plans.json"
